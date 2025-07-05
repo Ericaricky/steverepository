@@ -26,6 +26,7 @@ import NotFound from './pages/NotFound';
 // Guards
 import PrivateRoute from './components/guards/PrivateRoute';
 import RoleRoute from './components/guards/RoleRoute';
+import CreateUser from './pages/admin/CreateUser';
 
 function App() {
   return (
@@ -65,6 +66,15 @@ function App() {
                   element={
                     <RoleRoute roles={['admin']}>
                       <UserManagement />
+                    </RoleRoute>
+                  } 
+                />
+
+                <Route 
+                  path="/admin/users/create" 
+                  element={
+                    <RoleRoute roles={['admin']}>
+                      <CreateUser />
                     </RoleRoute>
                   } 
                 />

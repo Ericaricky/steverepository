@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Types
-export type RequestStatus = 'pending' | 'in_review' | 'approved' | 'rejected' | 'more_info' | 'archived';
+export type RequestStatus = 'created' | 'verify' | 'approved' | 'rejected' | 'processing' | 'completed' | 'failed';
 export type RequestType = 'transcript' | 'grade_appeal' | 'enrollment' | 'exemption' | 'other';
 
 export interface RequestComment {
@@ -84,7 +84,7 @@ export const RequestProvider: React.FC<{ children: React.ReactNode }> = ({ child
           title: 'Demande de relevé de notes',
           description: 'Je souhaite obtenir mon relevé de notes pour la session 2023.',
           type: 'transcript',
-          status: 'pending',
+          status: 'created',
           urgency: 'medium',
           studentId: '5',
           studentName: 'Student User',
@@ -95,7 +95,7 @@ export const RequestProvider: React.FC<{ children: React.ReactNode }> = ({ child
           attachments: [],
           statusHistory: [
             {
-              status: 'pending',
+              status: 'created',
               changedBy: 'Student User',
               changedAt: new Date(2023, 5, 15).toISOString(),
             }
@@ -106,7 +106,7 @@ export const RequestProvider: React.FC<{ children: React.ReactNode }> = ({ child
           title: 'Réclamation de note examen Algorithme',
           description: 'Je souhaite faire une réclamation concernant ma note d\'examen en Algorithme qui me semble incorrecte.',
           type: 'grade_appeal',
-          status: 'in_review',
+          status: 'processing',
           urgency: 'high',
           studentId: '5',
           studentName: 'Student User',
@@ -136,12 +136,12 @@ export const RequestProvider: React.FC<{ children: React.ReactNode }> = ({ child
           ],
           statusHistory: [
             {
-              status: 'pending',
+              status: 'created',
               changedBy: 'Student User',
               changedAt: new Date(2023, 4, 10).toISOString(),
             },
             {
-              status: 'in_review',
+              status: 'processing',
               changedBy: 'Academic Secretary',
               changedAt: new Date(2023, 4, 15).toISOString(),
               comment: 'Requête transmise au professeur concerné',
@@ -191,12 +191,12 @@ export const RequestProvider: React.FC<{ children: React.ReactNode }> = ({ child
           ],
           statusHistory: [
             {
-              status: 'pending',
+              status: 'created',
               changedBy: 'Student User',
               changedAt: new Date(2023, 3, 5).toISOString(),
             },
             {
-              status: 'in_review',
+              status: 'processing',
               changedBy: 'Academic Secretary',
               changedAt: new Date(2023, 3, 10).toISOString(),
             },
@@ -237,7 +237,7 @@ export const RequestProvider: React.FC<{ children: React.ReactNode }> = ({ child
         comments: [],
         statusHistory: [
           {
-            status: 'pending',
+            status: 'created',
             changedBy: requestData.studentName,
             changedAt: now,
           }

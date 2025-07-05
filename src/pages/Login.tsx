@@ -113,14 +113,14 @@ const Login: React.FC = () => {
           </button>
         </div>
 
-        <div className="mt-4 text-sm text-center">
+        {/* <div className="mt-4 text-sm text-center">
           <p className="text-gray-600">
             Vous n'avez pas de compte ?{' '}
             <Link to="/register" className="font-medium text-[#0F4C81] hover:text-[#0D3F6C]">
               S'inscrire
             </Link>
           </p>
-        </div>
+        </div> */}
       </form>
     </div>
   );

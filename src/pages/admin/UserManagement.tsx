@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { User, UserCircle2, Search, Filter, Plus, Edit, Trash2, MoreVertical } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface UserData {
   id: string;
@@ -14,6 +15,8 @@ interface UserData {
 }
 
 const UserManagement: React.FC = () => {
+
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState<string[]>([]);
@@ -36,7 +39,7 @@ const UserManagement: React.FC = () => {
       id: '2',
       name: 'Jane Smith',
       email: 'jane.smith@example.com',
-      role: 'teacher',
+      role: 'director',
       department: 'Computer Science',
       status: 'active',
       lastLogin: '2024-02-14T15:45:00Z'
@@ -103,6 +106,7 @@ const UserManagement: React.FC = () => {
         return role;
     }
   };
+
 
   return (
     <div>
@@ -199,12 +203,13 @@ const UserManagement: React.FC = () => {
               Réinitialiser les filtres
             </button>
 
-            <button
+            <Link to='/admin/users/create'
               className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#0F4C81] hover:bg-[#0D3F6C]"
             >
-              <Plus className="-ml-1 mr-2 h-5 w-5" />
+              <Plus className="-ml-1 mr-2 h-5 w-5" 
+              />
               Nouvel utilisateur
-            </button>
+            </Link>
           </div>
         </div>
       </div>

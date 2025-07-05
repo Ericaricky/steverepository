@@ -124,7 +124,7 @@ const Requests: React.FC = () => {
   };
   
   const statusOptions: RequestStatus[] = [
-    'pending', 'in_review', 'approved', 'rejected', 'more_info', 'archived'
+    'created', 'verify', 'approved', 'rejected', 'processing', 'completed', 'failed'
   ];
   
   const typeOptions: RequestType[] = [
@@ -197,12 +197,13 @@ const Requests: React.FC = () => {
                         : 'bg-gray-100 text-gray-800'
                     }`}
                   >
-                    {status === 'pending' && 'En attente'}
-                    {status === 'in_review' && 'En examen'}
+                    {status === 'created' && 'Créée'}
+                    {status === 'verify' && 'Vérification'}
                     {status === 'approved' && 'Approuvée'}
                     {status === 'rejected' && 'Rejetée'}
-                    {status === 'more_info' && 'Infos supplémentaires'}
-                    {status === 'archived' && 'Archivée'}
+                    {status === 'completed' && 'Terminée'}
+                    {status === 'failed' && 'Échouée'}
+                    {status === 'processing' && 'En cours de traitement'}
                   </button>
                 ))}
               </div>
